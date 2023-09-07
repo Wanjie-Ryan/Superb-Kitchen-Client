@@ -38,8 +38,8 @@ function Navbar(){
               </Link>
             </div>
             <div className="nav-main__right__dashboard-cart">
-              <Link to="/cart" title="chats" className="link-dashboard">
-                {/* <p>Cart</p> */}
+              <Link to="/cart" title="cart" className="link-dashboard">
+                
                 <BsFillCartFill/>
               </Link>
             </div>
