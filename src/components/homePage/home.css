@@ -20,17 +20,54 @@
 .kitchen-items{
 
     width:calc(90% /3);
-    background-color: red;
-    height:30vh;
+   background-color: #f1f5f9;
+   /* background-color:#fafaf9; */
+    min-height:30vh;
+    padding:10px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    border-radius: 10px;
+}
+
+.kitchen-items:hover{
+
+    transform: scale(1.1);
+}
+
+.kitchen-details{
+
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container{
+
+    width:250px;
+    height:150px;
 }
 
 .product-image{
 
-    width:200px;
-    height:150px;
+    width:100%;
+    height:100%;
     object-fit: cover;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius:10px;
+    cursor: pointer;
+}
+
+.img-desc{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.item-name{
+    font-weight:bold;
 }
 
