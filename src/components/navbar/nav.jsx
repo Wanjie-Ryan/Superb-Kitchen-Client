@@ -1,23 +1,20 @@
-import React, {useState} from 'react'
-import './nav.css'
-import { Link } from 'react-router-dom'
-import { BsChatDots, BsPersonCircle,BsFillCartFill } from "react-icons/bs";
+import React, { useState } from "react";
+import "./nav.css";
+import { Link } from "react-router-dom";
+import { BsChatDots, BsPersonCircle, BsFillCartFill } from "react-icons/bs";
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Cookies from "js-cookie";
 
+function Navbar() {
+  const [asideOpen, setAsideOpen] = useState(false);
+  const toggleAside = () => {
+    setAsideOpen(!asideOpen);
+  };
 
-function Navbar(){
-
-    const [asideOpen, setAsideOpen] = useState(false);
-    const toggleAside = () => {
-        setAsideOpen(!asideOpen);
-      };
-
-    return(
-        <>
-
-<nav className="nav-main">
+  return (
+    <>
+      <nav className="nav-main">
         <div className="nav-main__nav-inner">
           <div className="nav-main__left">
             <Link to="/" className="home-link">
@@ -39,13 +36,12 @@ function Navbar(){
             </div>
             <div className="nav-main__right__dashboard-cart">
               <Link to="/cart" title="cart" className="link-dashboard">
-                
-                <BsFillCartFill/>
+                <BsFillCartFill />
               </Link>
             </div>
 
             <div className="nav-main__right__logout">
-              <p >Logout</p>
+              <p>Logout</p>
             </div>
 
             <div className="nav-main__right__profile">
@@ -56,9 +52,7 @@ function Navbar(){
                   <BsPersonCircle />
                 )}
               </Link>
-              <p>
-                Good Afternoon Kibet
-              </p>
+              <p>Good Afternoon Kibet</p>
             </div>
 
             <div className="nav-main__right__dashboard-menu">
@@ -99,17 +93,14 @@ function Navbar(){
             </div>
 
             <div className="main-aside__inner__top__dashboard">
-            <Link to="/profile" className="link-profile">
+              <Link to="/profile" className="link-profile">
                 {Image ? (
                   <img src={Image} className="image" />
                 ) : (
                   <BsPersonCircle />
                 )}
               </Link>
-              <p>
-                Good Afternoon Kibet
-              </p>
-              
+              <p>Good Afternoon Kibet</p>
             </div>
 
             <div className="main-aside__inner__top__logout">
@@ -118,12 +109,8 @@ function Navbar(){
           </div>
         </div>
       </aside>
-
-            
-
-        </>
-    )
+    </>
+  );
 }
 
-
-export default Navbar
+export default Navbar;
