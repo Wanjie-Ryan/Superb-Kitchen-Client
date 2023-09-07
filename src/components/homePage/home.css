@@ -81,3 +81,21 @@
 .cart-icon {
   margin-right: 10px;
 }
+
+@media screen and (max-width: 568px) {
+  .home-inner {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .kitchen-items {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 568px) and (max-width: 912px) {
+  .kitchen-items {
+    width: calc(90% / 2);
+  }
+}
