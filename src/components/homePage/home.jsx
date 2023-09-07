@@ -29,7 +29,7 @@ function Home(){
                             <p className='item-name'>Gold Spoons</p>
                             <p className='item-price'>Ksh.1200</p>
                             <p className='item-count'>20 remaining</p>
-                            <button className='item-btn'><BsFillCartPlusFill/>Add To cart</button>
+                            <button className='item-btn'><BsFillCartPlusFill className='cart-icon'/>Add To cart</button>
 
                         </div>
                     </div>
@@ -50,7 +50,7 @@ function Home(){
                             <p className='item-name'>Gold Spoons</p>
                             <p className='item-price'>Ksh.1200</p>
                             <p className='item-count'>20 remaining</p>
-                            <button className='item-btn'><BsFillCartPlusFill/>Add To cart</button>
+                            <button className='item-btn'><BsFillCartPlusFill className='cart-icon'/>Add To cart</button>
 
                         </div>
                     </div>
@@ -71,7 +71,7 @@ function Home(){
                             <p className='item-name'>Gold Spoons</p>
                             <p className='item-price'>Ksh.1200</p>
                             <p className='item-count'>20 remaining</p>
-                            <button className='item-btn'><BsFillCartPlusFill/>Add To cart</button>
+                            <button className='item-btn'><BsFillCartPlusFill className='cart-icon'/>Add To cart</button>
 
                         </div>
                     </div>
@@ -91,7 +91,7 @@ function Home(){
                             <p className='item-name'>Gold Spoons</p>
                             <p className='item-price'>Ksh.1200</p>
                             <p className='item-count'>20 remaining</p>
-                            <button className='item-btn'><BsFillCartPlusFill/>Add To cart</button>
+                            <button className='item-btn'><BsFillCartPlusFill className='cart-icon'/>Add To cart</button>
 
                         </div>
                     </div>
@@ -112,7 +112,7 @@ function Home(){
                             <p className='item-name'>Gold Spoons</p>
                             <p className='item-price'>Ksh.1200</p>
                             <p className='item-count'>20 remaining</p>
-                            <button className='item-btn'><BsFillCartPlusFill/>Add To cart</button>
+                            <button className='item-btn'><BsFillCartPlusFill className='cart-icon'/>Add To cart</button>
 
                         </div>
                     </div>
@@ -133,7 +133,7 @@ function Home(){
                             <p className='item-name'>Gold Spoons</p>
                             <p className='item-price'>Ksh.1200</p>
                             <p className='item-count'>20 remaining</p>
-                            <button className='item-btn'><BsFillCartPlusFill/>Add To cart</button>
+                            <button className='item-btn'><BsFillCartPlusFill className='cart-icon'/>Add To cart</button>
 
                         </div>
                     </div>
