@@ -1,0 +1,36 @@
+.home{
+
+    width:100%;
+    min-height:100vh;
+}
+
+.home-inner{
+
+    width:90%;
+    margin:0 auto;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:40px;
+}
+
+.kitchen-items{
+
+    width:calc(90% /3);
+    background-color: red;
+    height:30vh;
+}
+
+.product-image{
+
+    width:200px;
+    height:150px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
