@@ -57,13 +57,13 @@ function Register() {
               <div className="name-label">
                 <label>Password</label>
               </div>
-              <div className="input-container">
+              <div className="input-container-pwd">
                 <input type="password" placeholder="enter your Password" />
                 <AiOutlineEye className="toggle-password" />
               </div>
             </div>
 
-            <button type="submit">Let's Go</button>
+            <button type="submit" className='submit-btn'>Let's Go</button>
             <Link to="/login" className="login-p">
               <p>Already Registered? Sign-In</p>
             </Link>
