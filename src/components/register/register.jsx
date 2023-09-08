@@ -6,6 +6,7 @@ import "react-phone-number-input/style.css";
 import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 function Register() {
+
   const [contact, setContact] = useState("+254");
   const handleContact = (phoneNumber) => {
     setContact(phoneNumber);
@@ -15,10 +16,10 @@ function Register() {
     <>
       <section className="register">
         <div className="regsiter-container">
-          <p className="home-link">Superb Kitchen</p>
-          <p>Register</p>
+          <p className="home-link title">Superb Kitchen</p>
+          <p className='register-text'>Register</p>
 
-          <form>
+          <form className='form'>
             <div className="form-container">
               <div className="name-label">
                 <label>Name</label>
