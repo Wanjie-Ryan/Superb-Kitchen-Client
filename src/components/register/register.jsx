@@ -4,7 +4,7 @@ import pic5 from "../../images/kitchen-5.jpg";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { AiOutlineEye } from "react-icons/ai";
-
+import {Link} from 'react-router-dom'
 function Register(){
 
     const [contact, setContact] = useState("+254");
@@ -70,8 +70,15 @@ function Register(){
                             </div>
                         </div>
 
+                        <button type='submit'>Let's Go</button>
+                        <Link to="/login" className="login-p">
+              <p>Already Registered? Sign-In</p>
+            </Link>
+
 
                     </form>
+
+
 
 
 
