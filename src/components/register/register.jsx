@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './reg-log.css'
 import pic5 from "../../images/kitchen-5.jpg";
-
-
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { AiOutlineEye } from "react-icons/ai";
 
 function Register(){
+
+    const [contact, setContact] = useState("+254");
+    const handleContact = (phoneNumber) => {
+        setContact(phoneNumber);
+      };
 
     return(
         <>
@@ -18,7 +24,53 @@ function Register(){
 
                     <form>
 
+                        <div className='form-container'>
+                            <div className='name-label'>
+                                <label>Name</label>
+
+                            </div>
+                            <div className='input-container'>
+                                <input type='text' placeholder='enter your name'/>
+                            </div>
+                        </div>
+
+                        <div className='form-container'>
+                            <div className='name-label'>
+                                <label>Email</label>
+
+                            </div>
+                            <div className='input-container'>
+                                <input type='email' placeholder='enter your Email'/>
+                            </div>
+                        </div>
                         
+                        <div className='form-container'>
+                            {/* <div className='name-label'>
+                                <label>Contact</label>
+
+                            </div> */}
+                            <div className='input-container'>
+                            <PhoneInput
+                placeholder="Your Phone Number"
+                className="pwd-input"
+                onChange={handleContact}
+                value={contact}
+              />
+                            </div>
+                        </div>
+
+                        <div className='form-container'>
+                            <div className='name-label'>
+                                <label>Password</label>
+
+                            </div>
+                            <div className='input-container'>
+                                <input type='password' placeholder='enter your Password'/>
+                                <AiOutlineEye className="toggle-password"  />
+                            </div>
+                        </div>
+
+
                     </form>
 
 
