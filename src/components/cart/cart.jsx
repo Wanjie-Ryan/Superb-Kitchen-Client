@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./cart.css";
 import pic1 from "../../images/kitchen-1.jpg";
+import CheckoutModal from "./checkoutModal";
 
 function Cart() {
+  const [checkoutModal, setCheckoutModal] = useState(false);
+
+  const OpenModal = (user) => {
+    setCheckoutModal(true);
+  };
+
+  const CloseModal = () => {
+    setCheckoutModal(false);
+  };
   return (
     <>
       <section className="cart">
@@ -19,12 +29,16 @@ function Cart() {
               <p className="item-price-cart">Ksh.1200</p>
               <p className="item-count-cart">20 remaining</p>
               <div className="button-cart">
-                <button className="item-btn-cart">Proceed to Checkout</button>
+                <button className="item-btn-cart" onClick={OpenModal}>
+                  Proceed to Checkout
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <CheckoutModal isOpen={checkoutModal} onClose={CloseModal} />
     </>
   );
 }
