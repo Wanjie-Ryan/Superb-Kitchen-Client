@@ -82,6 +82,11 @@
   margin-right: 10px;
 }
 
+.cart-link{
+  text-decoration: none;
+  color:black;
+}
+
 @media screen and (max-width: 568px) {
   .home-inner {
     flex-direction: column;
