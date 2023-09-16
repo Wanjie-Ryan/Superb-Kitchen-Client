@@ -16,7 +16,7 @@ function Checkout({ isOpen, onClose }) {
          <main className="contact">
           <nav className="contact__contact-nav">
             <div className="contact__contact-nav__nav-title">
-              <h2>Contact</h2>
+              <h2>Checkout</h2>
             </div>
 
             <div className="contact__contact-nav__nav-close">
@@ -33,16 +33,7 @@ function Checkout({ isOpen, onClose }) {
               <input
                 type="text"
                
-                readOnly
-              />
-            </div>
-
-            <div className="contact__contact-container__name">
-              <label>Pi Username</label>
-              <input
-                type="text"
-                
-                readOnly
+                // readOnly
               />
             </div>
 
@@ -50,19 +41,47 @@ function Checkout({ isOpen, onClose }) {
               <label>Email</label>
               <input
                 type="text"
+                
+                // readOnly
+              />
+            </div>
+
+            <div className="contact__contact-container__name">
+              <label>Contact</label>
+              <input
+                type="tel"
+                placeholder="should start with 254 eg.254xxxxxxxxx"
+
                
               />
             </div>
 
             <div className="contact__contact-container__name">
-              <label>Phone Number</label>
-              <input type="text" placeholder="(405) 555-0128"  />
+              <label>Location</label>
+              <input type="text" placeholder="eg.Nairobi"  />
             </div>
 
             <div className="contact__contact-container__name">
-              <label>Address</label>
+              <label>Product</label>
               <input
                 type="text"
+                
+                
+              />
+            </div>
+            <div className="contact__contact-container__name">
+              <label>Quantity</label>
+              <input
+                type="number"
+                
+                
+              />
+            </div>
+
+            <div className="contact__contact-container__name">
+              <label>Amount</label>
+              <input
+                type="number"
                 
                 
               />
@@ -70,7 +89,7 @@ function Checkout({ isOpen, onClose }) {
           </div>
 
           <button className="contact__okay-btn" onClick={onClose}>
-            Okay
+            Pay
           </button>
         </main>
 
