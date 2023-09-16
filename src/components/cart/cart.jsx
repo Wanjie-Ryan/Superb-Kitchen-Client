@@ -15,15 +15,16 @@ function Cart() {
 
           <div className="cart-details-right">
             <div className="cart-container-details">
-              <p className="item-name">Gold Spoons</p>
-              <p className="item-price">Ksh.1200</p>
-              <p className="item-count">20 remaining</p>
-              <button className="item-btn">
-                {/* <Link to="/cart" className="cart-link"> */}
-                {/* <BsFillCartPlusFill className="cart-icon" /> */}
-                Proceed to Checkout
-                {/* </Link> */}
-              </button>
+              <p className="item-name-cart">Gold Spoons</p>
+              <p className="item-price-cart">Ksh.1200</p>
+              <p className="item-count-cart">20 remaining</p>
+              <div className="button-cart">
+                    <button className="item-btn-cart">
+                    
+                    Proceed to Checkout
+                
+                </button>
+                </div>
             </div>
           </div>
         </div>
