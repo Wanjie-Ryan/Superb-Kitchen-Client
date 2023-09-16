@@ -82,9 +82,9 @@
   margin-right: 10px;
 }
 
-.cart-link{
+.cart-link {
   text-decoration: none;
-  color:black;
+  color: black;
 }
 
 @media screen and (max-width: 568px) {
