@@ -13,7 +13,7 @@ function Checkout({ isOpen, onClose }) {
         className="modal-contents "
         overlayClassName="modal-overlay"
       >
-         <main className="contact">
+        <main className="contact">
           <nav className="contact__contact-nav">
             <div className="contact__contact-nav__nav-title">
               <h2>Checkout</h2>
@@ -32,7 +32,7 @@ function Checkout({ isOpen, onClose }) {
               <label>Name</label>
               <input
                 type="text"
-               
+
                 // readOnly
               />
             </div>
@@ -41,7 +41,7 @@ function Checkout({ isOpen, onClose }) {
               <label>Email</label>
               <input
                 type="text"
-                
+
                 // readOnly
               />
             </div>
@@ -51,40 +51,26 @@ function Checkout({ isOpen, onClose }) {
               <input
                 type="tel"
                 placeholder="should start with 254 eg.254xxxxxxxxx"
-
-               
               />
             </div>
 
             <div className="contact__contact-container__name">
               <label>Location</label>
-              <input type="text" placeholder="eg.Nairobi"  />
+              <input type="text" placeholder="eg.Nairobi" />
             </div>
 
             <div className="contact__contact-container__name">
               <label>Product</label>
-              <input
-                type="text"
-                
-                
-              />
+              <input type="text" />
             </div>
             <div className="contact__contact-container__name">
               <label>Quantity</label>
-              <input
-                type="number"
-                
-                
-              />
+              <input type="number" />
             </div>
 
             <div className="contact__contact-container__name">
               <label>Amount</label>
-              <input
-                type="number"
-                
-                
-              />
+              <input type="number" />
             </div>
           </div>
 
@@ -92,12 +78,6 @@ function Checkout({ isOpen, onClose }) {
             Pay
           </button>
         </main>
-
-
-
-
-
-
       </Modal>
     </>
   );
