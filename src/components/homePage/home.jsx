@@ -6,7 +6,7 @@ import pic3 from "../../images/kitchen-3.jpg";
 import pic4 from "../../images/kitchen-4.jpg";
 import pic5 from "../../images/kitchen-5.jpg";
 import { BsFillCartPlusFill } from "react-icons/bs";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
@@ -23,10 +23,10 @@ function Home() {
                 <p className="item-price">Ksh.1200</p>
                 <p className="item-count">20 remaining</p>
                 <button className="item-btn">
-                <Link to='/cart' className='cart-link'>
-                  <BsFillCartPlusFill className="cart-icon" />
-                  Add To cart
-                </Link>
+                  <Link to="/cart" className="cart-link">
+                    <BsFillCartPlusFill className="cart-icon" />
+                    Add To cart
+                  </Link>
                 </button>
               </div>
             </div>
@@ -97,9 +97,9 @@ function Home() {
                 <p className="item-price">Ksh.1200</p>
                 <p className="item-count">20 remaining</p>
                 <button className="item-btn">
-                <Link to='/cart' className="cart-link">
-                  <BsFillCartPlusFill className="cart-icon" />
-                  Add To cart
+                  <Link to="/cart" className="cart-link">
+                    <BsFillCartPlusFill className="cart-icon" />
+                    Add To cart
                   </Link>
                 </button>
               </div>
@@ -117,9 +117,9 @@ function Home() {
                 <p className="item-price">Ksh.1200</p>
                 <p className="item-count">20 remaining</p>
                 <button className="item-btn">
-                  <Link to='/cart' className="cart-link">
-                  <BsFillCartPlusFill className="cart-icon" />
-                  Add To cart
+                  <Link to="/cart" className="cart-link">
+                    <BsFillCartPlusFill className="cart-icon" />
+                    Add To cart
                   </Link>
                 </button>
               </div>
