@@ -19,12 +19,8 @@ function Cart() {
               <p className="item-price-cart">Ksh.1200</p>
               <p className="item-count-cart">20 remaining</p>
               <div className="button-cart">
-                    <button className="item-btn-cart">
-                    
-                    Proceed to Checkout
-                
-                </button>
-                </div>
+                <button className="item-btn-cart">Proceed to Checkout</button>
+              </div>
             </div>
           </div>
         </div>
