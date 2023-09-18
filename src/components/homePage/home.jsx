@@ -1,13 +1,11 @@
 import React from "react";
 import "./home.css";
-import pic1 from "../../images/kitchen-1.jpg";
-import pic2 from "../../images/kitchen-2.jpg";
-import pic3 from "../../images/kitchen-3.jpg";
-import pic4 from "../../images/kitchen-4.jpg";
-import pic5 from "../../images/kitchen-5.jpg";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import {useCart} from '../context/cart'
 function Home() {
+  const {addToCart} = useCart()
+
   const imageData = [
     {
       id: 1,
@@ -58,6 +56,8 @@ function Home() {
       button: "Add To cart",
     },
   ];
+
+
   return (
     <>
       <section className="home">
@@ -73,7 +73,7 @@ function Home() {
                   <p className="item-name">{items.name}</p>
                   <p className="item-price">{items.price}</p>
                   <p className="item-count">{items.quantity}</p>
-                  <button className="item-btn">
+                  <button className="item-btn" onClick={()=>{addToCart(items)}}>
                     <Link to="/cart" className="cart-link">
                       <BsFillCartPlusFill className="cart-icon" />
                       {items.button}
