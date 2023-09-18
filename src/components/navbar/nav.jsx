@@ -5,12 +5,17 @@ import { BsChatDots, BsPersonCircle, BsFillCartFill } from "react-icons/bs";
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Cookies from "js-cookie";
+import { useCart } from "../context/cart";
+
 
 function Navbar() {
   const [asideOpen, setAsideOpen] = useState(false);
   const toggleAside = () => {
     setAsideOpen(!asideOpen);
   };
+
+  const { cart } = useCart();
+
 
   return (
     <>
@@ -36,6 +41,7 @@ function Navbar() {
             </div>
             <div className="nav-main__right__dashboard-cart">
               <Link to="/cart" title="cart" className="link-dashboard">
+                <p className='cart-count'>{cart.length===0?'0': cart.length}</p>
                 <BsFillCartFill />
               </Link>
             </div>
