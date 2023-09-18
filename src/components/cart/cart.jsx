@@ -17,7 +17,10 @@ function Cart() {
   return (
     <>
       <section className="cart">
-        {cart.map((items) => (
+        {cart.length === 0?(
+            <p className='alert-cart'>There are no items in your cart</p>
+        ):(
+            cart.map((items) => (
           <div className="cart-container">
             <div className="cart-inner">
               <div className="cart-image-container" key={items.id}>
@@ -44,7 +47,8 @@ function Cart() {
               </div>
             </div>
           </div>
-        ))}
+        ))
+            )}
         {/* <button className="clear-cart-btn" onClick={clearCart}>
           Clear Cart
         </button> */}
