@@ -8,31 +8,86 @@ import pic5 from "../../images/kitchen-5.jpg";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 function Home() {
+
+  const imageData = [
+    {
+      id:1,
+      pic:require('../../images/kitchen-1.jpg'),
+      name:'Gold Spoons',
+      price:'ksh.1200',
+      quantity:'20 remaining',
+      button:'Add To cart'
+    },
+    {
+      id:2,
+      pic:require('../../images/kitchen-2.jpg'),
+      name:'Gold Spoons',
+      price:'ksh.1200',
+      quantity:'20 remaining',
+      button:'Add To cart'
+    },
+    {
+      id:3,
+      pic:require('../../images/kitchen-3.jpg'),
+      name:'Gold Spoons',
+      price:'ksh.1200',
+      quantity:'20 remaining',
+      button:'Add To cart'
+    },
+    {
+      id:4,
+      pic:require('../../images/kitchen-4.jpg'),
+      name:'Gold Spoons',
+      price:'ksh.1200',
+      quantity:'20 remaining',
+      button:'Add To cart'
+    },
+    {
+      id:5,
+      pic:require('../../images/kitchen-5.jpg'),
+      name:'Gold Spoons',
+      price:'ksh.1200',
+      quantity:'20 remaining',
+      button:'Add To cart'
+    },
+    {
+      id:6,
+      pic:require('../../images/kitchen-5.jpg'),
+      name:'Gold Spoons',
+      price:'ksh.1200',
+      quantity:'20 remaining',
+      button:'Add To cart'
+    }
+  ]
   return (
     <>
       <section className="home">
         <div className="home-inner">
-          <div className="kitchen-items">
-            <div className="kitchen-details">
+
+          {imageData.map((items)=>(
+            <div className="kitchen-items" >
+            <div className="kitchen-details" key={items.id}>
               <div className="img-container">
-                <img src={pic1} alt="image" className="product-image" />
+                <img src={items.pic} alt="image" className="product-image" />
               </div>
 
               <div className="img-desc">
-                <p className="item-name">Gold Spoons</p>
-                <p className="item-price">Ksh.1200</p>
-                <p className="item-count">20 remaining</p>
+                <p className="item-name">{items.name}</p>
+                <p className="item-price">{items.price}</p>
+                <p className="item-count">{items.quantity}</p>
                 <button className="item-btn">
                   <Link to="/cart" className="cart-link">
                     <BsFillCartPlusFill className="cart-icon" />
-                    Add To cart
+                    {items.button}
                   </Link>
                 </button>
               </div>
-            </div>
           </div>
+            </div>
+          ))
+}
 
-          <div className="kitchen-items">
+          {/* <div className="kitchen-items">
             <div className="kitchen-details">
               <div className="img-container">
                 <img src={pic1} alt="image" className="product-image" />
@@ -48,9 +103,9 @@ function Home() {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="kitchen-items">
+          {/* <div className="kitchen-items">
             <div className="kitchen-details">
               <div className="img-container">
                 <img src={pic2} alt="image" className="product-image" />
@@ -66,9 +121,9 @@ function Home() {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="kitchen-items">
+          {/* <div className="kitchen-items">
             <div className="kitchen-details">
               <div className="img-container">
                 <img src={pic3} alt="image" className="product-image" />
@@ -84,9 +139,9 @@ function Home() {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="kitchen-items">
+          {/* <div className="kitchen-items">
             <div className="kitchen-details">
               <div className="img-container">
                 <img src={pic4} alt="image" className="product-image" />
@@ -104,9 +159,9 @@ function Home() {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="kitchen-items">
+          {/* <div className="kitchen-items">
             <div className="kitchen-details">
               <div className="img-container">
                 <img src={pic5} alt="image" className="product-image" />
@@ -124,7 +179,7 @@ function Home() {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>
