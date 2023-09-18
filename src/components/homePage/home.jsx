@@ -10,7 +10,7 @@ function Home() {
     {
       id: 1,
       pic: require("../../images/kitchen-1.jpg"),
-      name: "Gold Spoons",
+      name: "Golden Spoons",
       price: "ksh.1200",
       quantity: "20 remaining",
       button: "Add To cart",
@@ -18,7 +18,7 @@ function Home() {
     {
       id: 2,
       pic: require("../../images/kitchen-2.jpg"),
-      name: "Gold Spoons",
+      name: "Brown Spoons",
       price: "ksh.1200",
       quantity: "20 remaining",
       button: "Add To cart",
@@ -74,10 +74,10 @@ function Home() {
                   <p className="item-price">{items.price}</p>
                   <p className="item-count">{items.quantity}</p>
                   <button className="item-btn" onClick={()=>{addToCart(items)}}>
-                    <Link to="/cart" className="cart-link">
+                    {/* <Link to="/cart" className="cart-link"> */}
                       <BsFillCartPlusFill className="cart-icon" />
                       {items.button}
-                    </Link>
+                    {/* </Link> */}
                   </button>
                 </div>
               </div>
