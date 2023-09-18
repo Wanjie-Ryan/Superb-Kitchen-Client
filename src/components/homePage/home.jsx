@@ -2,9 +2,9 @@ import React from "react";
 import "./home.css";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import {useCart} from '../context/cart'
+import { useCart } from "../context/cart";
 function Home() {
-  const {addToCart} = useCart()
+  const { addToCart } = useCart();
 
   const imageData = [
     {
@@ -57,7 +57,6 @@ function Home() {
     },
   ];
 
-
   return (
     <>
       <section className="home">
@@ -73,10 +72,15 @@ function Home() {
                   <p className="item-name">{items.name}</p>
                   <p className="item-price">{items.price}</p>
                   <p className="item-count">{items.quantity}</p>
-                  <button className="item-btn" onClick={()=>{addToCart(items)}}>
+                  <button
+                    className="item-btn"
+                    onClick={() => {
+                      addToCart(items);
+                    }}
+                  >
                     {/* <Link to="/cart" className="cart-link"> */}
-                      <BsFillCartPlusFill className="cart-icon" />
-                      {items.button}
+                    <BsFillCartPlusFill className="cart-icon" />
+                    {items.button}
                     {/* </Link> */}
                   </button>
                 </div>
