@@ -64,13 +64,17 @@ function Checkout({ isOpen, onClose }) {
               <input type="text" />
             </div>
             <div className="contact__contact-container__name">
+              <label>Unit Price</label>
+              <input type="text" placeholder="amount in ksh" />
+            </div>
+            <div className="contact__contact-container__name">
               <label>Quantity</label>
               <input type="number" />
             </div>
 
             <div className="contact__contact-container__name">
               <label>Amount</label>
-              <input type="number" />
+              <input type="text" placeholder="amount in ksh." />
             </div>
           </div>
 

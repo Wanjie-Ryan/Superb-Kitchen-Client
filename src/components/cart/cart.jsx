@@ -45,9 +45,9 @@ function Cart() {
             </div>
           </div>
         ))}
-        <button className="clear-cart-btn" onClick={clearCart}>
+        {/* <button className="clear-cart-btn" onClick={clearCart}>
           Clear Cart
-        </button>
+        </button> */}
       </section>
 
       <CheckoutModal isOpen={checkoutModal} onClose={CloseModal} />
