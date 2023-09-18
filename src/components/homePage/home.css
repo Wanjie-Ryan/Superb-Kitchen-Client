@@ -78,6 +78,11 @@
   font-size: 18px;
 }
 
+.item-btn-clicked{
+  cursor:not-allowed;
+
+}
+
 .cart-icon {
   margin-right: 10px;
 }

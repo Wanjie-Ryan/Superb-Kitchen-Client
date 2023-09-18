@@ -4,7 +4,7 @@ import { BsFillCartPlusFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/cart";
 function Home() {
-  const { addToCart } = useCart();
+  const { addToCart,cartClicked } = useCart();
 
   const imageData = [
     {
