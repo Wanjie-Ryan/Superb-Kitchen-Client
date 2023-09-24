@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from "react";
 
 const initialState = {
-  vendor: null,
+  user: null,
   loading: false,
   error: null,
 };
@@ -12,21 +12,21 @@ const regReducer = (action, state) => {
   switch (action.type) {
     case "regStart":
       return {
-        vendor: null,
+        user: null,
         loading: true,
         error: null,
       };
 
     case "regComplete":
       return {
-        vendor: action.payload,
+        user: action.payload,
         loading: false,
         error: null,
       };
 
     case "regFail":
       return {
-        vendor: null,
+        user: null,
         loading: false,
         error: action.payload,
       };
@@ -42,7 +42,7 @@ export const RegContextProvider = ({ children }) => {
   return (
     <RegContext.Provider
       value={{
-        vendor: state.vendor,
+        user: state.user,
         loading: state.loading,
         error: state.error,
         dispatch,
