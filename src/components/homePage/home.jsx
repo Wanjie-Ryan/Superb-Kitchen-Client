@@ -105,11 +105,17 @@ function Home() {
     <>
       <section className="home">
         <div className="home-inner">
-          {imageData.map((items) => (
+          {loading? (
+                    <AiOutlineLoading3Quarters className="loading-icon" />
+
+            ):products.length === 0?(
+              <p>There are no products that have been created</p>
+              ):(
+                products.map((items) => (
             <div className="kitchen-items">
-              <div className="kitchen-details" key={items.id}>
+              <div className="kitchen-details" key={items._id}>
                 <div className="img-container">
-                  <img src={items.pic} alt="image" className="product-image" />
+                  <img src={items.image} alt="image" className="product-image" />
                 </div>
 
                 <div className="img-desc">
@@ -125,13 +131,13 @@ function Home() {
                   >
                     {/* <Link to="/cart" className="cart-link"> */}
                     <BsFillCartPlusFill className="cart-icon" />
-                    {items.button}
+                    Add To Cart
                     {/* </Link> */}
                   </button>
                 </div>
               </div>
             </div>
-          ))}
+          )))}
         </div>
       </section>
     </>
