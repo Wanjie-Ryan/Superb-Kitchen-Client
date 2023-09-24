@@ -3,14 +3,13 @@ import "./reg-log.css";
 import pic5 from "../../images/kitchen-5.jpg";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { AiOutlineEye,AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineEye, AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { RegContext } from "../context/regContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 function Register() {
-
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [contact, setContact] = useState("+254");
@@ -33,7 +32,6 @@ function Register() {
     setEmail(e.target.value);
   };
 
-
   const handleContact = (phoneNumber) => {
     setContact(phoneNumber);
   };
@@ -42,7 +40,7 @@ function Register() {
     setPwd(e.target.value);
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -109,9 +107,6 @@ function Register() {
     }
   };
 
-
-
-
   return (
     <>
       <section className="register">
@@ -119,15 +114,19 @@ function Register() {
           <p className="home-link title">Superb Kitchen</p>
           <p className="register-text">Register</p>
 
-          <form className="form" onClick={handleRegistration}>
+          <form className="form" onSubmit={handleRegistration}>
             <div className="form-container">
               <div className="name-label">
                 <label>Name</label>
               </div>
               <div className="input-container">
-                <input type="text" placeholder="enter your name" required
+                <input
+                  type="text"
+                  placeholder="enter your name"
+                  required
                   value={name}
-                  onChange={handleName} />
+                  onChange={handleName}
+                />
               </div>
             </div>
 
@@ -136,14 +135,17 @@ function Register() {
                 <label>Email</label>
               </div>
               <div className="input-container">
-                <input type="email" placeholder="enter your Email" required
+                <input
+                  type="email"
+                  placeholder="enter your Email"
+                  required
                   value={email}
-                  onChange={handleEmail}/>
+                  onChange={handleEmail}
+                />
               </div>
             </div>
 
             <div className="form-container">
-              
               <div className="input-container">
                 <PhoneInput
                   placeholder="Your Phone Number"
@@ -160,17 +162,19 @@ function Register() {
                 <label>Password</label>
               </div>
               <div className="input-container-pwd">
-                <input  type={checkpwd ? "text" : "password"}
+                <input
+                  type={checkpwd ? "text" : "password"}
                   placeholder="enter your Password"
                   required
                   value={pwd}
-                  onChange={handlePwd} />
+                  onChange={handlePwd}
+                />
                 <AiOutlineEye className="toggle-password" onClick={TogglePwd} />
               </div>
             </div>
 
             <button type="submit" className="submit-btn">
-            {load ? (
+              {load ? (
                 <AiOutlineLoading3Quarters className="loading-icon" />
               ) : (
                 "Let's Go"
