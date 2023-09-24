@@ -39,13 +39,10 @@ function Navbar() {
   const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("userToken");
-    toast.success('Till next time')
-    
+    toast.success("Till next time");
 
     navigate("/");
   };
-
-
 
   const { cart } = useCart();
 
@@ -92,7 +89,9 @@ function Navbar() {
                   <BsPersonCircle />
                 )}
               </Link>
-              <p>{greeting} {username}</p>
+              <p>
+                {greeting} {username}
+              </p>
             </div>
 
             <div className="nav-main__right__dashboard-menu">
@@ -140,7 +139,9 @@ function Navbar() {
                   <BsPersonCircle />
                 )}
               </Link>
-              <p>{greeting} {username}</p>
+              <p>
+                {greeting} {username}
+              </p>
             </div>
 
             <div className="main-aside__inner__top__logout">
