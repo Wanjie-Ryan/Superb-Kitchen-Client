@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { AiOutlineEye, AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,7 +7,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
 function Login() {
-
   const [email, setEmail] = useState();
   const [pwd, setPwd] = useState();
   const [load, setLoad] = useState(false);
@@ -59,10 +58,7 @@ function Login() {
         name: response.data.userLogin.name,
       };
 
-      sessionStorage.setItem(
-        "UserLoginDetails",
-        JSON.stringify(loginDetails)
-      );
+      sessionStorage.setItem("UserLoginDetails", JSON.stringify(loginDetails));
       const LoginToken = response.data.userToken;
 
       Cookies.set("userToken", LoginToken);
@@ -106,10 +102,6 @@ function Login() {
     }
   };
 
-
-
-
-
   return (
     <>
       <section className="register">
@@ -123,9 +115,13 @@ function Login() {
                 <label>Email</label>
               </div>
               <div className="input-container">
-                <input type="email" placeholder="enter your Email" required
+                <input
+                  type="email"
+                  placeholder="enter your Email"
+                  required
                   value={email}
-                  onChange={handleEmail}/>
+                  onChange={handleEmail}
+                />
               </div>
             </div>
 
@@ -134,24 +130,28 @@ function Login() {
                 <label>Password</label>
               </div>
               <div className="input-container-pwd">
-                <input type={showPwd ? "text" : "password"}
+                <input
+                  type={showPwd ? "text" : "password"}
                   placeholder="enter your Password"
                   required
                   value={pwd}
-                  onChange={handlePwd} />
-                <AiOutlineEye className="toggle-password"  onClick={togglePassword}/>
+                  onChange={handlePwd}
+                />
+                <AiOutlineEye
+                  className="toggle-password"
+                  onClick={togglePassword}
+                />
               </div>
             </div>
 
-            
-              <button type="submit" className="submit-btn">
+            <button type="submit" className="submit-btn">
               {load ? (
                 <AiOutlineLoading3Quarters className="loading-icon" />
               ) : (
                 "Let's Go"
               )}
-              </button>
-            
+            </button>
+
             <Link to="/register" className="login-p">
               <p>Not yet Registered? Register</p>
             </Link>
