@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./home.css";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/cart";
-import axios from 'axios'
-import {  AiOutlineLoading3Quarters } from "react-icons/ai";
+import axios from "axios";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -62,82 +62,79 @@ function Home() {
     },
   ];
 
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(()=>{
-
-    const getUserProducts  = async()=>{
-
-      try{
-
-        setLoading(true)
-        const response = await axios.get('http://localhost:3005/api/user/products/userproducts')
+  useEffect(() => {
+    const getUserProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          "http://localhost:3005/api/user/products/userproducts"
+        );
         // console.log(response.data.userProducts)
-        setProducts(response.data.userProducts)
-        setLoading(false)
-
-
-      }
-
-      catch(err){
-
+        setProducts(response.data.userProducts);
+        setLoading(false);
+      } catch (err) {
         // console.log(err)
-        if(err.response.status === 500){
-          toast.error('A problem with our servers, hang on')
+        if (err.response.status === 500) {
+          toast.error("A problem with our servers, hang on");
         }
+      } finally {
+        setLoading(false);
       }
-      finally{
-        setLoading(false)
-      }
+    };
 
-
-
-    }
-
-    getUserProducts()
-
-
-
-  },[])
+    getUserProducts();
+  }, []);
 
   return (
     <>
       <section className="home">
         <div className="home-inner">
-          {loading? (
-                    <AiOutlineLoading3Quarters className="loading-icon" />
+          {loading ? (
+            <AiOutlineLoading3Quarters className="loading-icon" />
+          ) : products.length === 0 ? (
+            <p>There are no products that have been created</p>
+          ) : (
+            products.map((items) => (
+              <div className="kitchen-items" key={items._id}>
+                <div className="kitchen-details">
+                  <div className="img-container">
+                    <img
+                      src={items.image}
+                      alt="image"
+                      className="product-image"
+                    />
+                  </div>
 
-            ):products.length === 0?(
-              <p>There are no products that have been created</p>
-              ):(
-                products.map((items) => (
-            <div className="kitchen-items" key={items._id}>
-              <div className="kitchen-details" >
-                <div className="img-container">
-                  <img src={items.image} alt="image" className="product-image" />
-                </div>
-
-                <div className="img-desc">
-                  
-                  <p className="item-name">Product Name:<span className="product-details">{items.name}</span></p>
-                  <p className="item-price">Product Price:Ksh.<span className="product-details">{items.price}</span></p>
-                  <p className="item-count">Product Count:<span className="product-details">{items.quantity}</span></p>
-                  <button
-                    className="item-btn"
-                    onClick={() => {
-                      addToCart(items);
-                    }}
-                  >
-                    
-                    <BsFillCartPlusFill className="cart-icon" />
-                    Add To Cart
-                    
-                  </button>
+                  <div className="img-desc">
+                    <p className="item-name">
+                      Product Name:
+                      <span className="product-details">{items.name}</span>
+                    </p>
+                    <p className="item-price">
+                      Product Price:Ksh.
+                      <span className="product-details">{items.price}</span>
+                    </p>
+                    <p className="item-count">
+                      Product Count:
+                      <span className="product-details">{items.quantity}</span>
+                    </p>
+                    <button
+                      className="item-btn"
+                      onClick={() => {
+                        addToCart(items);
+                      }}
+                    >
+                      <BsFillCartPlusFill className="cart-icon" />
+                      Add To Cart
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          )))}
+            ))
+          )}
         </div>
       </section>
     </>
