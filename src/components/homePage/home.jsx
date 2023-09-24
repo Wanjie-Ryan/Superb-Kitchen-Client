@@ -82,7 +82,7 @@ function Home() {
 
       catch(err){
 
-        console.log(err)
+        // console.log(err)
         if(err.response.status === 500){
           toast.error('A problem with our servers, hang on')
         }
@@ -112,27 +112,27 @@ function Home() {
               <p>There are no products that have been created</p>
               ):(
                 products.map((items) => (
-            <div className="kitchen-items">
-              <div className="kitchen-details" key={items._id}>
+            <div className="kitchen-items" key={items._id}>
+              <div className="kitchen-details" >
                 <div className="img-container">
                   <img src={items.image} alt="image" className="product-image" />
                 </div>
 
                 <div className="img-desc">
                   
-                  <p className="item-name">{items.name}</p>
-                  <p className="item-price">{items.price}</p>
-                  <p className="item-count">{items.quantity}</p>
+                  <p className="item-name">Product Name:<span className="product-details">{items.name}</span></p>
+                  <p className="item-price">Product Price:Ksh.<span className="product-details">{items.price}</span></p>
+                  <p className="item-count">Product Count:<span className="product-details">{items.quantity}</span></p>
                   <button
                     className="item-btn"
                     onClick={() => {
                       addToCart(items);
                     }}
                   >
-                    {/* <Link to="/cart" className="cart-link"> */}
+                    
                     <BsFillCartPlusFill className="cart-icon" />
                     Add To Cart
-                    {/* </Link> */}
+                    
                   </button>
                 </div>
               </div>

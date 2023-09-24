@@ -91,6 +91,26 @@
   color: black;
 }
 
+.loading-icon {
+  animation: spin 1s linear infinite;
+  color: purple;
+  font-size: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.product-details {
+  margin-left: 5px;
+  color: #32d3db;
+}
+
 @media screen and (max-width: 568px) {
   .home-inner {
     flex-direction: column;
