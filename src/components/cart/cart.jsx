@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "./cart.css";
 import CheckoutModal from "./checkoutModal";
 import { useCart } from "../context/cart";
+import Cookies from "js-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Cart() {
   const [checkoutModal, setCheckoutModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -16,6 +20,18 @@ function Cart() {
   };
 
   const { cart, removeFromCart, clearCart } = useCart();
+
+  const isAuthenticated = Cookies.get("userToken") ? true : false;
+
+  const handleProceedToCheckout = (item) => {
+    if (isAuthenticated) {
+      OpenModal(item);
+    } else {
+      
+      toast.error('Login to proceed to checkout')
+    }
+  }
+
   return (
     <>
       <section className="cart">
@@ -40,7 +56,7 @@ function Cart() {
                   <p className="item-price-cart">Product Price: <span className="product-details">Ksh.{items.price}</span></p>
                   <p className="item-count-cart">Product Count:<span className="product-details">{items.quantity}</span></p>
                   <div className="button-cart">
-                    <button className="item-btn-cart" onClick={()=>OpenModal(items)}>
+                    <button className="item-btn-cart" onClick={() => handleProceedToCheckout(items)}>
                       Proceed to Checkout
                     </button>
                     <button
