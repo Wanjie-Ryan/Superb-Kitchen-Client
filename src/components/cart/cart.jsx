@@ -11,7 +11,7 @@ function Cart() {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const OpenModal = (item) => {
-    setSelectedItem(item)
+    setSelectedItem(item);
     setCheckoutModal(true);
   };
 
@@ -27,10 +27,9 @@ function Cart() {
     if (isAuthenticated) {
       OpenModal(item);
     } else {
-      
-      toast.error('Login to proceed to checkout')
+      toast.error("Login to proceed to checkout");
     }
-  }
+  };
 
   return (
     <>
@@ -52,11 +51,23 @@ function Cart() {
 
               <div className="cart-details-right">
                 <div className="cart-container-details">
-                  <p className="item-name-cart">Product Name:<span className="product-details">{items.name}</span></p>
-                  <p className="item-price-cart">Product Price: <span className="product-details">Ksh.{items.price}</span></p>
-                  <p className="item-count-cart">Product Count:<span className="product-details">{items.quantity}</span></p>
+                  <p className="item-name-cart">
+                    Product Name:
+                    <span className="product-details">{items.name}</span>
+                  </p>
+                  <p className="item-price-cart">
+                    Product Price:{" "}
+                    <span className="product-details">Ksh.{items.price}</span>
+                  </p>
+                  <p className="item-count-cart">
+                    Product Count:
+                    <span className="product-details">{items.quantity}</span>
+                  </p>
                   <div className="button-cart">
-                    <button className="item-btn-cart" onClick={() => handleProceedToCheckout(items)}>
+                    <button
+                      className="item-btn-cart"
+                      onClick={() => handleProceedToCheckout(items)}
+                    >
                       Proceed to Checkout
                     </button>
                     <button
@@ -76,7 +87,11 @@ function Cart() {
         </button> */}
       </section>
 
-      <CheckoutModal isOpen={checkoutModal} onClose={CloseModal} selectedItem= {selectedItem} />
+      <CheckoutModal
+        isOpen={checkoutModal}
+        onClose={CloseModal}
+        selectedItem={selectedItem}
+      />
     </>
   );
 }
