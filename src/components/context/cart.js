@@ -11,6 +11,7 @@ export function useCart() {
 export function CartProvider({ children }) {
   //cartProvider acts as a provider for the cart context, it wraps the entire app to make the  cart state and functions available to its child components.
   const [cart, setCart] = useState([]);
+  // console.log(cart)
   const [cartClicked, setCartClicked] = useState(false);
   //   console.log(cart)
   //initializes the cart state to an empty array, it will store an array of products in the shopping cart
@@ -21,7 +22,7 @@ export function CartProvider({ children }) {
   };
 
   const removeFromCart = (productId) => {
-    setCart(cart.filter((item) => item.id !== productId));
+    setCart(cart.filter((item) => item._id !== productId));
     // setCartClicked(false)
   };
 

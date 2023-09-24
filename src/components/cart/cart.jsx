@@ -4,8 +4,10 @@ import CheckoutModal from "./checkoutModal";
 import { useCart } from "../context/cart";
 function Cart() {
   const [checkoutModal, setCheckoutModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const OpenModal = (user) => {
+  const OpenModal = (item) => {
+    setSelectedItem(item)
     setCheckoutModal(true);
   };
 
@@ -23,9 +25,9 @@ function Cart() {
           cart.map((items) => (
             <div className="cart-container">
               <div className="cart-inner">
-                <div className="cart-image-container" key={items.id}>
+                <div className="cart-image-container" key={items._id}>
                   <img
-                    src={items.pic}
+                    src={items.image}
                     className="cart-image"
                     alt="cart-image"
                   />
@@ -34,16 +36,16 @@ function Cart() {
 
               <div className="cart-details-right">
                 <div className="cart-container-details">
-                  <p className="item-name-cart">{items.name}</p>
-                  <p className="item-price-cart">{items.price}</p>
-                  <p className="item-count-cart">{items.quantity}</p>
+                  <p className="item-name-cart">Product Name:<span className="product-details">{items.name}</span></p>
+                  <p className="item-price-cart">Product Price: <span className="product-details">Ksh.{items.price}</span></p>
+                  <p className="item-count-cart">Product Count:<span className="product-details">{items.quantity}</span></p>
                   <div className="button-cart">
-                    <button className="item-btn-cart" onClick={OpenModal}>
+                    <button className="item-btn-cart" onClick={()=>OpenModal(items)}>
                       Proceed to Checkout
                     </button>
                     <button
                       className="item-btn-cart-remove"
-                      onClick={() => removeFromCart(items.id)}
+                      onClick={() => removeFromCart(items._id)}
                     >
                       Remove Item
                     </button>
@@ -58,7 +60,7 @@ function Cart() {
         </button> */}
       </section>
 
-      <CheckoutModal isOpen={checkoutModal} onClose={CloseModal} />
+      <CheckoutModal isOpen={checkoutModal} onClose={CloseModal} selectedItem= {selectedItem} />
     </>
   );
 }

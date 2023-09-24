@@ -114,8 +114,8 @@ function Home() {
                       <span className="product-details">{items.name}</span>
                     </p>
                     <p className="item-price">
-                      Product Price:Ksh.
-                      <span className="product-details">{items.price}</span>
+                      Product Price:
+                      <span className="product-details">Ksh.{items.price}</span>
                     </p>
                     <p className="item-count">
                       Product Count:

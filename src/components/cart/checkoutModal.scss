@@ -92,6 +92,10 @@
   }
 }
 
+.price{
+  cursor: not-allowed;
+}
+
 @media screen and (max-width: 568px) {
   .modal-contents {
     width: 90%;

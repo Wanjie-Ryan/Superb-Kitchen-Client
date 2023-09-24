@@ -3,7 +3,7 @@ import "./checkoutModal.scss";
 import Modal from "react-modal";
 import { AiOutlineClose } from "react-icons/ai";
 
-function Checkout({ isOpen, onClose }) {
+function Checkout({ isOpen, onClose, selectedItem }) {
   return (
     <>
       <Modal
@@ -61,11 +61,23 @@ function Checkout({ isOpen, onClose }) {
 
             <div className="contact__contact-container__name">
               <label>Product</label>
-              <input type="text" />
+              <input
+                type="text"
+                placeholder="name of the prodcut"
+                value={selectedItem ? selectedItem.name : ""}
+                readOnly
+                className="price"
+              />
             </div>
             <div className="contact__contact-container__name">
               <label>Unit Price</label>
-              <input type="text" placeholder="amount in ksh" />
+              <input
+                type="text"
+                placeholder="amount in ksh"
+                value={selectedItem ? `ksh.${selectedItem.price}` : ""}
+                readOnly
+                className="price"
+              />
             </div>
             <div className="contact__contact-container__name">
               <label>Quantity</label>
