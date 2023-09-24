@@ -65,7 +65,7 @@ function Register() {
       };
 
       const response = await axios.post(
-        "http://localhost:3005/api/vendor/auth/register",
+        "http://localhost:3005/api/user/auth/register",
         registrationData
       );
 
