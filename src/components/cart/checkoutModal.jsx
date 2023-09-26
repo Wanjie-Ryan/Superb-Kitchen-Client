@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./checkoutModal.scss";
 import Modal from "react-modal";
 import { AiOutlineClose } from "react-icons/ai";
@@ -34,10 +34,15 @@ function Checkout({ isOpen, onClose, selectedItem }) {
 
   
 
-    // const unitPrice =  selectedItem.price
-    // const totalPrice = quantity * unitPrice
-
-    // setAmount(totalPrice)
+  useEffect(() => {
+    if (quantity && selectedItem) {
+      const unitPrice = selectedItem.price;
+      const totalPrice = quantity * unitPrice;
+      setAmount(totalPrice);
+    } else {
+      setAmount(0); 
+    }
+  }, [quantity, selectedItem]);
   
   return (
     <>
@@ -130,7 +135,7 @@ function Checkout({ isOpen, onClose, selectedItem }) {
 
             <div className="contact__contact-container__name">
               <label>Amount</label>
-              <input type="text" placeholder="amount in ksh." value={amount}  />
+              <input type="text" placeholder="amount in ksh." value={`ksh.${amount}`} readOnly className="price"  />
             </div>
           </div>
 
