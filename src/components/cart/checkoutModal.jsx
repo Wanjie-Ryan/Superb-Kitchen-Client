@@ -1,38 +1,30 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./checkoutModal.scss";
 import Modal from "react-modal";
 import { AiOutlineClose } from "react-icons/ai";
 
 function Checkout({ isOpen, onClose, selectedItem }) {
+  const [name, setName] = useState();
+  const [contact, setContact] = useState();
+  const [email, setEmail] = useState();
+  const [quantity, setQuantity] = useState();
+  const [amount, setAmount] = useState();
 
-  const [name, setName] = useState()
-  const [contact, setContact] = useState()
-  const [email, setEmail] = useState()
-  const [quantity, setQuantity] = useState()
-  const [amount, setAmount] = useState()
-
-  const handleName = (e)=>{
-
-    setName(e.target.value)
-  }
-  const handleContact = (e)=>{
-
-    setContact(e.target.value)
-  }
-  const handleEmail = (e)=>{
-
-    setEmail(e.target.value)
-  }
-  const handleQuantity = (e)=>{
-
-    setQuantity(e.target.value)
-  }
-  const handleAmount = (e)=>{
-
-    setAmount(e.target.value)
-  }
-
-  
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+  const handleContact = (e) => {
+    setContact(e.target.value);
+  };
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleQuantity = (e) => {
+    setQuantity(e.target.value);
+  };
+  const handleAmount = (e) => {
+    setAmount(e.target.value);
+  };
 
   useEffect(() => {
     if (quantity && selectedItem) {
@@ -40,10 +32,10 @@ function Checkout({ isOpen, onClose, selectedItem }) {
       const totalPrice = quantity * unitPrice;
       setAmount(totalPrice);
     } else {
-      setAmount(0); 
+      setAmount(0);
     }
   }, [quantity, selectedItem]);
-  
+
   return (
     <>
       <Modal
@@ -70,14 +62,7 @@ function Checkout({ isOpen, onClose, selectedItem }) {
           <div className="contact__contact-container">
             <div className="contact__contact-container__name">
               <label>Name</label>
-              <input
-                type="text"
-                required
-                value={name}
-                onChange={handleName}
-
-                
-              />
+              <input type="text" required value={name} onChange={handleName} />
             </div>
 
             <div className="contact__contact-container__name">
@@ -87,8 +72,6 @@ function Checkout({ isOpen, onClose, selectedItem }) {
                 required
                 value={email}
                 onChange={handleEmail}
-
-                
               />
             </div>
 
@@ -130,18 +113,27 @@ function Checkout({ isOpen, onClose, selectedItem }) {
             </div>
             <div className="contact__contact-container__name">
               <label>Quantity</label>
-              <input type="number" required value={quantity} onChange={handleQuantity}/>
+              <input
+                type="number"
+                required
+                value={quantity}
+                onChange={handleQuantity}
+              />
             </div>
 
             <div className="contact__contact-container__name">
               <label>Amount</label>
-              <input type="text" placeholder="amount in ksh." value={`ksh.${amount}`} readOnly className="price"  />
+              <input
+                type="text"
+                placeholder="amount in ksh."
+                value={`ksh.${amount}`}
+                readOnly
+                className="price"
+              />
             </div>
           </div>
 
-          <button className="contact__okay-btn">
-            Pay
-          </button>
+          <button className="contact__okay-btn">Pay</button>
         </main>
       </Modal>
     </>
