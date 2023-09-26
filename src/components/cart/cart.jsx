@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 function Cart() {
   const [checkoutModal, setCheckoutModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  // console.log(selectedItem)
 
   const OpenModal = (item) => {
     setSelectedItem(item);
@@ -21,7 +22,11 @@ function Cart() {
 
   const { cart, removeFromCart, clearCart } = useCart();
 
+  const token  = Cookies.get('userToken')
+  // console.log(token)
+
   const isAuthenticated = Cookies.get("userToken") ? true : false;
+  // console.log(isAuthenticated)
 
   const handleProceedToCheckout = (item) => {
     if (isAuthenticated) {
@@ -91,6 +96,7 @@ function Cart() {
         isOpen={checkoutModal}
         onClose={CloseModal}
         selectedItem={selectedItem}
+        token={token}
       />
     </>
   );

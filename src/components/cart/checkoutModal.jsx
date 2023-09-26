@@ -2,13 +2,25 @@ import React, { useState, useEffect } from "react";
 import "./checkoutModal.scss";
 import Modal from "react-modal";
 import { AiOutlineClose } from "react-icons/ai";
+import axios from 'axios'
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
-function Checkout({ isOpen, onClose, selectedItem }) {
+function Checkout({ isOpen, onClose, selectedItem,token }) {
+  // console.log(selectedItem.createdBy.Vendor)
+
+  const navigate = useNavigate()
   const [name, setName] = useState();
   const [contact, setContact] = useState();
   const [email, setEmail] = useState();
+  const [location, setLocation] = useState()
   const [quantity, setQuantity] = useState();
   const [amount, setAmount] = useState();
+  const [vendor, setVendor] = useState([])
+  // console.log(vendor.contact)
+  const phone = vendor.contact
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -19,12 +31,14 @@ function Checkout({ isOpen, onClose, selectedItem }) {
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
+
+  const handleLocation = (e)=>{
+    setLocation(e.target.value)
+  }
   const handleQuantity = (e) => {
     setQuantity(e.target.value);
   };
-  const handleAmount = (e) => {
-    setAmount(e.target.value);
-  };
+  
 
   useEffect(() => {
     if (quantity && selectedItem) {
@@ -34,7 +48,106 @@ function Checkout({ isOpen, onClose, selectedItem }) {
     } else {
       setAmount(0);
     }
+
+    if(selectedItem){
+
+      axios.get(`http://localhost:3005/api/vendor/auth/singleVendor/${selectedItem.createdBy}`, {headers:{Authorization :"Bearer " + token}}).then((response)=>{
+        setVendor(response.data.VendorObj)
+      }).catch((err)=>{
+        console.log(err)
+        if (err.response.status === 401) {
+          toast.error("Not Authorized");
+          navigate("/");
+        } else if (err.response.status === 404) {
+          toast.error("Vendor not found");
+        } else if (err.response.status === 500) {
+          toast.error("A problem with our servers, hang on");
+        }
+      })
+
+
+    }
   }, [quantity, selectedItem]);
+
+  const [loading, setLoading] = useState(false)
+
+  const handlePayment = async(e)=>{
+    e.preventDefault()
+
+    try{
+
+      setLoading(true)
+      
+      if(!name || !contact || !email ||!location || !quantity){
+        
+        toast.error('Please fill the required fields')
+        return
+      }
+
+      const customer_details = {
+        full_name: name,
+        location: location,
+        phone_number: contact,
+        email: email,
+      };
+
+      const products = [
+        {
+          product_name: selectedItem.name,
+          quantity: quantity,
+          unit_price: selectedItem.price,
+        },
+      ];
+
+      const Payment_Data = {
+        customer_details,
+        products,
+        amount: {
+          currency: "KES",
+          delivery_fee: 0.0,
+          discount_fee: 0.0,
+          total: parseFloat(amount),
+        },
+        callback_details: {
+          notify_customer: true,
+          transaction_reference: vendor._id,
+          callback_url:
+            "https://8903-154-79-248-134.ngrok-free.app/api/chpter/payment",
+        },
+      };
+      
+
+      const response = await axios.post('https://api.chpter.co/v1/initiate/mpesa-payment', Payment_Data, {headers:{ "Content-Type": "application/json",
+      "Api-key":
+        "pk_test_d39abf62f0e7f5b39fd55bcd19579aaa7caeab3ba6dd59c80d2c4ba5df38a106",}})
+
+        console.log(response)
+
+        setLoading(false)
+        toast.success("An STK-Push has been sent to your phone, confirm");
+
+
+      
+    }
+
+    catch(err){
+      console.log(err)
+      if (err.response.status === 401) {
+        toast.error("Payment not authorized");
+      } else if (err.response.status === 400) {
+        toast.error("Validation error");
+      } else {
+        toast.error("A problem with the servers, hang on");
+      }
+    }
+
+    finally{
+
+      setLoading(false)
+    }
+
+
+  }
 
   return (
     <>
@@ -59,7 +172,7 @@ function Checkout({ isOpen, onClose, selectedItem }) {
             </div>
           </nav>
 
-          <div className="contact__contact-container">
+          <form className="contact__contact-container" onSubmit={handlePayment}>
             <div className="contact__contact-container__name">
               <label>Name</label>
               <input type="text" required value={name} onChange={handleName} />
@@ -86,10 +199,10 @@ function Checkout({ isOpen, onClose, selectedItem }) {
               />
             </div>
 
-            {/* <div className="contact__contact-container__name">
+            <div className="contact__contact-container__name">
               <label>Location</label>
-              <input type="text" placeholder="eg.Nairobi" />
-            </div> */}
+              <input type="text" placeholder="eg.Nairobi" value={location} onChange={handleLocation}/>
+            </div>
 
             <div className="contact__contact-container__name">
               <label>Product</label>
@@ -131,9 +244,9 @@ function Checkout({ isOpen, onClose, selectedItem }) {
                 className="price"
               />
             </div>
-          </div>
-
           <button className="contact__okay-btn">Pay</button>
+          </form>
+
         </main>
       </Modal>
     </>
