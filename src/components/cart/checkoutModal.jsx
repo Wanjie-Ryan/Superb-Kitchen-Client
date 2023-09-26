@@ -11,6 +11,34 @@ function Checkout({ isOpen, onClose, selectedItem }) {
   const [quantity, setQuantity] = useState()
   const [amount, setAmount] = useState()
 
+  const handleName = (e)=>{
+
+    setName(e.target.value)
+  }
+  const handleContact = (e)=>{
+
+    setContact(e.target.value)
+  }
+  const handleEmail = (e)=>{
+
+    setEmail(e.target.value)
+  }
+  const handleQuantity = (e)=>{
+
+    setQuantity(e.target.value)
+  }
+  const handleAmount = (e)=>{
+
+    setAmount(e.target.value)
+  }
+
+  
+
+    // const unitPrice =  selectedItem.price
+    // const totalPrice = quantity * unitPrice
+
+    // setAmount(totalPrice)
+  
   return (
     <>
       <Modal
@@ -39,17 +67,23 @@ function Checkout({ isOpen, onClose, selectedItem }) {
               <label>Name</label>
               <input
                 type="text"
+                required
+                value={name}
+                onChange={handleName}
 
-                // readOnly
+                
               />
             </div>
 
             <div className="contact__contact-container__name">
               <label>Email</label>
               <input
-                type="text"
+                type="email"
+                required
+                value={email}
+                onChange={handleEmail}
 
-                // readOnly
+                
               />
             </div>
 
@@ -57,14 +91,17 @@ function Checkout({ isOpen, onClose, selectedItem }) {
               <label>Contact</label>
               <input
                 type="tel"
-                placeholder="should start with 254 eg.254xxxxxxxxx"
+                placeholder="mpesa no. start with 254 eg.254xxxxxxxxx"
+                required
+                value={contact}
+                onChange={handleContact}
               />
             </div>
 
-            <div className="contact__contact-container__name">
+            {/* <div className="contact__contact-container__name">
               <label>Location</label>
               <input type="text" placeholder="eg.Nairobi" />
-            </div>
+            </div> */}
 
             <div className="contact__contact-container__name">
               <label>Product</label>
@@ -88,16 +125,16 @@ function Checkout({ isOpen, onClose, selectedItem }) {
             </div>
             <div className="contact__contact-container__name">
               <label>Quantity</label>
-              <input type="number" />
+              <input type="number" required value={quantity} onChange={handleQuantity}/>
             </div>
 
             <div className="contact__contact-container__name">
               <label>Amount</label>
-              <input type="text" placeholder="amount in ksh." />
+              <input type="text" placeholder="amount in ksh." value={amount}  />
             </div>
           </div>
 
-          <button className="contact__okay-btn" onClick={onClose}>
+          <button className="contact__okay-btn">
             Pay
           </button>
         </main>

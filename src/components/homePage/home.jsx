@@ -11,56 +11,56 @@ import "react-toastify/dist/ReactToastify.css";
 function Home() {
   const { addToCart, cartClicked } = useCart();
 
-  const imageData = [
-    {
-      id: 1,
-      pic: require("../../images/kitchen-1.jpg"),
-      name: "Golden Spoons",
-      price: "ksh.1200",
-      quantity: "20 remaining",
-      button: "Add To cart",
-    },
-    {
-      id: 2,
-      pic: require("../../images/kitchen-2.jpg"),
-      name: "Brown Spoons",
-      price: "ksh.1200",
-      quantity: "20 remaining",
-      button: "Add To cart",
-    },
-    {
-      id: 3,
-      pic: require("../../images/kitchen-3.jpg"),
-      name: "Gold Spoons",
-      price: "ksh.1200",
-      quantity: "20 remaining",
-      button: "Add To cart",
-    },
-    {
-      id: 4,
-      pic: require("../../images/kitchen-4.jpg"),
-      name: "Gold Spoons",
-      price: "ksh.1200",
-      quantity: "20 remaining",
-      button: "Add To cart",
-    },
-    {
-      id: 5,
-      pic: require("../../images/kitchen-5.jpg"),
-      name: "Gold Spoons",
-      price: "ksh.1200",
-      quantity: "20 remaining",
-      button: "Add To cart",
-    },
-    {
-      id: 6,
-      pic: require("../../images/kitchen-5.jpg"),
-      name: "Gold Spoons",
-      price: "ksh.1200",
-      quantity: "20 remaining",
-      button: "Add To cart",
-    },
-  ];
+  // const imageData = [
+  //   {
+  //     id: 1,
+  //     pic: require("../../images/kitchen-1.jpg"),
+  //     name: "Golden Spoons",
+  //     price: "ksh.1200",
+  //     quantity: "20 remaining",
+  //     button: "Add To cart",
+  //   },
+  //   {
+  //     id: 2,
+  //     pic: require("../../images/kitchen-2.jpg"),
+  //     name: "Brown Spoons",
+  //     price: "ksh.1200",
+  //     quantity: "20 remaining",
+  //     button: "Add To cart",
+  //   },
+  //   {
+  //     id: 3,
+  //     pic: require("../../images/kitchen-3.jpg"),
+  //     name: "Gold Spoons",
+  //     price: "ksh.1200",
+  //     quantity: "20 remaining",
+  //     button: "Add To cart",
+  //   },
+  //   {
+  //     id: 4,
+  //     pic: require("../../images/kitchen-4.jpg"),
+  //     name: "Gold Spoons",
+  //     price: "ksh.1200",
+  //     quantity: "20 remaining",
+  //     button: "Add To cart",
+  //   },
+  //   {
+  //     id: 5,
+  //     pic: require("../../images/kitchen-5.jpg"),
+  //     name: "Gold Spoons",
+  //     price: "ksh.1200",
+  //     quantity: "20 remaining",
+  //     button: "Add To cart",
+  //   },
+  //   {
+  //     id: 6,
+  //     pic: require("../../images/kitchen-5.jpg"),
+  //     name: "Gold Spoons",
+  //     price: "ksh.1200",
+  //     quantity: "20 remaining",
+  //     button: "Add To cart",
+  //   },
+  // ];
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
