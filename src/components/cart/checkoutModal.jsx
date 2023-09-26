@@ -1,9 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import "./checkoutModal.scss";
 import Modal from "react-modal";
 import { AiOutlineClose } from "react-icons/ai";
 
 function Checkout({ isOpen, onClose, selectedItem }) {
+
+  const [name, setName] = useState()
+  const [contact, setContact] = useState()
+  const [email, setEmail] = useState()
+  const [quantity, setQuantity] = useState()
+  const [amount, setAmount] = useState()
+
   return (
     <>
       <Modal
