@@ -7,7 +7,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import { payDataContext } from "../context/pay"; 
+import { payDataContext } from "../context/pay";
 
 function Checkout({ isOpen, onClose, selectedItem, token }) {
   // console.log(selectedItem.createdBy.Vendor)
