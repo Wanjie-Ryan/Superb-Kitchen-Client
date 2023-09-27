@@ -6,6 +6,7 @@ import { RegContextProvider } from "./components/context/regContext";
 import { LogContextProvider } from "./components/context/logContext";
 
 import { CartProvider } from "../src/components/context/cart";
+import { PayDataProvider } from "../src/components/context/pay";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -15,7 +16,9 @@ root.render(
     <RegContextProvider>
       <LogContextProvider>
         <CartProvider>
-          <App />
+          <PayDataProvider>
+            <App />
+          </PayDataProvider>
         </CartProvider>
       </LogContextProvider>
       <ToastContainer className="toast-container" />
