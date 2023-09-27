@@ -114,7 +114,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
           notify_customer: true,
           transaction_reference: selectedItem._id,
           callback_url:
-            "https://60e3-154-79-248-134.ngrok-free.app/api/chpter/createpayment",
+            "https://44c7-154-79-248-134.ngrok-free.app/api/chpter/createpayment",
         },
       };
 
@@ -148,7 +148,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
             }
           );
 
-          console.log(response);
+          // console.log(response);
 
           if (!response.ok) {
             // Handle non-200 status codes here
@@ -167,6 +167,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
 
           if (data.latestPayment.Success === true) {
             toast.success("Transaction Successful");
+            navigate("/records");
           } else {
             toast.error("Transaction cancelled");
           }
@@ -176,7 +177,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
         }
       }, 10000);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response.status === 401) {
         toast.error("Payment not authorized");
       } else if (err.response.status === 400) {
