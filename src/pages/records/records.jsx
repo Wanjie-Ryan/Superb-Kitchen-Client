@@ -5,7 +5,7 @@ import Records from "../../components/records/records";
 function RecordsPage() {
   return (
     <>
-        <Navbar/>
+      <Navbar />
       <Records />
     </>
   );

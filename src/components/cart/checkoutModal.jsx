@@ -7,10 +7,13 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+
 
 function Checkout({ isOpen, onClose, selectedItem, token }) {
   // console.log(selectedItem.createdBy.Vendor)
 
+  // const history = useHistory()
   const navigate = useNavigate();
   const [name, setName] = useState();
   const [contact, setContact] = useState();
@@ -167,7 +170,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
 
           if (data.latestPayment.Success === true) {
             toast.success("Transaction Successful");
-            navigate("/records");
+            navigate(`/records`);
           } else {
             toast.error("Transaction cancelled");
           }
