@@ -73,6 +73,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
   }, [quantity, selectedItem]);
 
   const [loading, setLoading] = useState(false);
+  const [payData, setPayData] = useState();
 
   const handlePayment = async (e) => {
     e.preventDefault();
@@ -113,7 +114,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
           notify_customer: true,
           transaction_reference: selectedItem._id,
           callback_url:
-            "https://8903-154-79-248-134.ngrok-free.app/api/chpter/payment",
+            "https://60e3-154-79-248-134.ngrok-free.app/api/chpter/createpayment",
         },
       };
 
@@ -129,10 +130,56 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
         }
       );
 
-      console.log(response);
+      // console.log(response);
 
       setLoading(false);
       toast.success("An STK-Push has been sent to your phone, confirm");
+
+      setTimeout(async () => {
+        try {
+         
+          const response = await fetch(
+            "http://localhost:3005/api/chpter/latestpayments",
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          console.log(response)
+
+          if (!response.ok) {
+            // Handle non-200 status codes here
+            if (response.status === 401) {
+              toast.error("Not authorized");
+              navigate("/");
+            } else {
+              toast.error("A problem with the servers, hang on");
+            }
+            return;
+          }
+
+          const data = await response.json();
+
+          setPayData(data.latestPayment);
+
+          if (data.latestPayment.Success === true) {
+           
+
+            toast.success("Transaction Successful");
+          } else {
+            toast.error("Transaction cancelled");
+          }
+        } catch (err) {
+          // console.log(err);
+          toast.error("A problem occurred, please try again later");
+        }
+      }, 10000);
+      
+
     } catch (err) {
       console.log(err);
       if (err.response.status === 401) {
