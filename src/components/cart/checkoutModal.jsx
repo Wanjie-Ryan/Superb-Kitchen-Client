@@ -137,7 +137,6 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
 
       setTimeout(async () => {
         try {
-         
           const response = await fetch(
             "http://localhost:3005/api/chpter/latestpayments",
             {
@@ -149,7 +148,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
             }
           );
 
-          console.log(response)
+          console.log(response);
 
           if (!response.ok) {
             // Handle non-200 status codes here
@@ -167,8 +166,6 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
           setPayData(data.latestPayment);
 
           if (data.latestPayment.Success === true) {
-           
-
             toast.success("Transaction Successful");
           } else {
             toast.error("Transaction cancelled");
@@ -178,8 +175,6 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
           toast.error("A problem occurred, please try again later");
         }
       }, 10000);
-      
-
     } catch (err) {
       console.log(err);
       if (err.response.status === 401) {
@@ -294,7 +289,14 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
                 className="price"
               />
             </div>
-            <button className="contact__okay-btn">Pay</button>
+            <button className="contact__okay-btn">
+              {" "}
+              {loading ? (
+                <AiOutlineLoading3Quarters className="loading-icon" />
+              ) : (
+                "Pay"
+              )}
+            </button>
           </form>
         </main>
       </Modal>
