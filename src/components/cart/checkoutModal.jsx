@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./checkoutModal.scss";
 import Modal from "react-modal";
 import { AiOutlineClose } from "react-icons/ai";
@@ -7,13 +7,13 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
-
+import { payDataContext } from "../context/pay"; 
 
 function Checkout({ isOpen, onClose, selectedItem, token }) {
   // console.log(selectedItem.createdBy.Vendor)
 
-  // const history = useHistory()
+  const { setPayd } = useContext(payDataContext);
+
   const navigate = useNavigate();
   const [name, setName] = useState();
   const [contact, setContact] = useState();
@@ -167,6 +167,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
           const data = await response.json();
 
           setPayData(data.latestPayment);
+          setPayd(data);
 
           if (data.latestPayment.Success === true) {
             toast.success("Transaction Successful");

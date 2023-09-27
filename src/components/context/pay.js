@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const payDataContext = createContext();
+export const payDataContext = createContext();
 
 export const PayDataProvider = ({ children }) => {
   const [payd, setPayd] = useState(null);

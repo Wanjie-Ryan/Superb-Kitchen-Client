@@ -1,13 +1,20 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import "./records.css";
 import { FaFileCsv } from "react-icons/fa";
 import { BsFillFileEarmarkPdfFill } from "react-icons/bs";
+import { payDataContext } from "../context/pay"; 
+
 function Records() {
+
+  const { payd } = useContext(payDataContext);
+
+  console.log(payd)
+
   
 
   return (
     <>
-    <div classname='records'>
+    <div className='records'>
 
       <div className="table-container">
         <div className="table-btns">
