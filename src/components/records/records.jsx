@@ -28,11 +28,11 @@ function Records() {
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
-        console.log(response);
+        // console.log(response);
 
         setProduct(response.data.singleProduct);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
 
         if (err.response.status === 401) {
           toast.error("Not Authorized");
@@ -48,7 +48,6 @@ function Records() {
     getSingleProduct();
   }, [productId]);
 
-  
   return (
     <>
       <div className="records">
