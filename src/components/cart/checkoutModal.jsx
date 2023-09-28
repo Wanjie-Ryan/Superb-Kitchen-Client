@@ -117,7 +117,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
           notify_customer: true,
           transaction_reference: selectedItem._id,
           callback_url:
-            "https://44c7-154-79-248-134.ngrok-free.app/api/chpter/createpayment",
+            "https://383f-154-79-248-134.ngrok-free.app/api/chpter/createpayment",
         },
       };
 
@@ -166,6 +166,8 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
 
           const data = await response.json();
 
+          // console.log(data)
+
           setPayData(data.latestPayment);
           setPayd(data);
 
@@ -179,9 +181,9 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
           // console.log(err);
           toast.error("A problem occurred, please try again later");
         }
-      }, 10000);
+      }, 13000);
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       if (err.response.status === 401) {
         toast.error("Payment not authorized");
       } else if (err.response.status === 400) {

@@ -38,7 +38,7 @@ function Records() {
                 <td>1</td>
                 <td>Spoons</td>
                 <td>3</td>
-                <td>ksh.100</td>
+                <td>Ksh. {payd.latestPayment.Amount[0]}</td>
                 <td className="paid">Paid</td>
                 <td className="pending">Pending</td>
               </tr>
