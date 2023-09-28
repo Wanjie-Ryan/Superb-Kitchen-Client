@@ -12,25 +12,25 @@ function Records() {
   const { payd } = useContext(payDataContext);
   // console.log(payd);
   const productId = payd ? payd.latestPayment.transaction_reference : "";
-  console.log(productId);
+  // console.log(productId);
 
   const [product, setProduct] = useState([]);
   const [recordIndex, setRecordIndex] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = Cookies.get("userToken");
+    const token = Cookies.get().userToken;
 
     const getSingleProduct = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3005/api/user/products/usersingleproduct${productId}`,
-          { headers: { Authorization: "Bearer" + token } }
+          `http://localhost:3005/api/user/products/usersingleproduct/${productId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
 
         console.log(response);
 
-        setProduct(response.singleProduct);
+        setProduct(response.data.singleProduct);
       } catch (err) {
         console.log(err);
 
@@ -48,6 +48,7 @@ function Records() {
     getSingleProduct();
   }, [productId]);
 
+  
   return (
     <>
       <div className="records">

@@ -183,7 +183,7 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
         }
       }, 13000);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response.status === 401) {
         toast.error("Payment not authorized");
       } else if (err.response.status === 400) {
