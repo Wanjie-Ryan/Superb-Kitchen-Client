@@ -7,6 +7,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import jsPDF from "jspdf";
 
 function Records() {
   const { payd } = useContext(payDataContext);
@@ -49,6 +50,23 @@ function Records() {
   }, [productId]);
 
   const generatePDF =()=>{
+
+    const doc = new jsPDF();
+
+    doc.text('Purchased products List',10,10)
+
+    doc.text(`Product Name: ${product?product.name:'product'}`,10,20)
+    doc.text(`Amount:Ksh. ${payd?payd.latestPayment.Amount[0]:'0'}`,10,30)
+    doc.text(`Payment Status: Paid`,10,40)
+    doc.text(`Delivery Status: Pending`,10,50)
+
+    const pdfFileName = `Product_Purchased_${product.name}.pdf`
+
+    doc.save(pdfFileName)
+
+
+
+
     
   }
 
@@ -60,7 +78,7 @@ function Records() {
             <button className="csv">
               <FaFileCsv /> Export as CSV
             </button>
-            <button className="pdf">
+            <button className="pdf" onClick={generatePDF}>
               <BsFillFileEarmarkPdfFill />
               Export as PDF
             </button>
