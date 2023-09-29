@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { payDataContext } from "../context/pay";
 
-function Checkout({ isOpen, onClose, selectedItem, token }) {
+function Checkout({ isOpen, onClose, selectedItem, token, userId }) {
   // console.log(selectedItem.createdBy.Vendor)
 
   const { setPayd } = useContext(payDataContext);
@@ -135,8 +135,6 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
 
       // console.log(response);
 
-
-
       setLoading(false);
       toast.success("An STK-Push has been sent to your phone, confirm");
 
@@ -156,7 +154,13 @@ function Checkout({ isOpen, onClose, selectedItem, token }) {
           // console.log(response);
 
           const updatedQuantity = selectedItem.quantity - parseInt(quantity);
-          const updateResponse = await axios.patch(`http://localhost:3005/api/updateuserproduct/${selectedItem._id}`, {quantity:updatedQuantity})
+          const updateResponse = await axios.patch(
+            `http://localhost:3005/api/user/products/updateuserproduct/${selectedItem._id}`,
+            { quantity: updatedQuantity, boughtBy: userId },
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+
+          // console.log(updateResponse);
 
           if (!response.ok) {
             // Handle non-200 status codes here
