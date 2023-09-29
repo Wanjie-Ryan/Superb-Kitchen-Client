@@ -49,26 +49,24 @@ function Records() {
     getSingleProduct();
   }, [productId]);
 
-  const generatePDF =()=>{
-
+  const generatePDF = () => {
     const doc = new jsPDF();
 
-    doc.text('Purchased products List',10,10)
+    doc.text("Purchased products List", 10, 10);
 
-    doc.text(`Product Name: ${product?product.name:'product'}`,10,20)
-    doc.text(`Amount:Ksh. ${payd?payd.latestPayment.Amount[0]:'0'}`,10,30)
-    doc.text(`Payment Status: Paid`,10,40)
-    doc.text(`Delivery Status: Pending`,10,50)
+    doc.text(`Product Name: ${product ? product.name : "product"}`, 10, 20);
+    doc.text(
+      `Amount:Ksh. ${payd ? payd.latestPayment.Amount[0] : "0"}`,
+      10,
+      30
+    );
+    doc.text(`Payment Status: Paid`, 10, 40);
+    doc.text(`Delivery Status: Pending`, 10, 50);
 
-    const pdfFileName = `Product_Purchased_${product.name}.pdf`
+    const pdfFileName = `Product_Purchased_${product.name}.pdf`;
 
-    doc.save(pdfFileName)
-
-
-
-
-    
-  }
+    doc.save(pdfFileName);
+  };
 
   return (
     <>
