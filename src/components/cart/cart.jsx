@@ -22,7 +22,7 @@ function Cart() {
 
   const { cart, removeFromCart, clearCart } = useCart();
 
-  const token  = Cookies.get('userToken')
+  const token = Cookies.get("userToken");
   // console.log(token)
 
   const isAuthenticated = Cookies.get("userToken") ? true : false;
@@ -38,9 +38,9 @@ function Cart() {
 
   const LogDetails = JSON.parse(sessionStorage.getItem("UserLoginDetails"));
 
-  let id
-  if(LogDetails){
-    id = LogDetails.id
+  let id;
+  if (LogDetails) {
+    id = LogDetails.id;
   }
 
   // console.log(id)
