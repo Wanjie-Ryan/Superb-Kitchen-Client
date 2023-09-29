@@ -36,6 +36,15 @@ function Cart() {
     }
   };
 
+  const LogDetails = JSON.parse(sessionStorage.getItem("UserLoginDetails"));
+
+  let id
+  if(LogDetails){
+    id = LogDetails.id
+  }
+
+  // console.log(id)
+
   return (
     <>
       <section className="cart">
@@ -97,6 +106,7 @@ function Cart() {
         onClose={CloseModal}
         selectedItem={selectedItem}
         token={token}
+        userId={id}
       />
     </>
   );
