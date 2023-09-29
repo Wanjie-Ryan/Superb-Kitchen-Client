@@ -68,6 +68,35 @@ function Records() {
     doc.save(pdfFileName);
   };
 
+  const convertToCSV =()=>{
+
+    const productData =[
+      {
+        No:recordIndex +1,
+        Product:product?product.name :'product',
+        Amount:`ksh.${payd?payd.latestPayment.Amount[0]:'0'}`,
+        'Payment Status':'Paid',
+        'Delivery Status':'Pending'
+
+      }
+    ]
+
+    const header = Object.keys(productData[0])
+
+    const csvContent =[
+      header.join(','),
+      ...productData.map((row)=>
+      header.map((fieldName)=>JSON.stringify(row[fieldName])).join(',')
+      )
+    ]
+
+    return csvContent.join('\n')
+
+
+  }
+
+  
+
   return (
     <>
       <div className="records">
