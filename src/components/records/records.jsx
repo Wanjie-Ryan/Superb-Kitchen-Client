@@ -95,14 +95,29 @@ function Records() {
 
   }
 
-  
+  const downloadCSV = ()=>{
+
+    const csv = convertToCSV()
+    const csvBlob = new Blob([csv], {type:'text/csv'})
+    const csvUrl = URL.createObjectURL(csvBlob)
+
+    const a = document.createElement('a')
+    a.href =csvUrl
+    a.download = 'Product_purchased.csv'
+    a.click()
+    URL.revokeObjectURL(csvUrl)
+
+
+  }
+
+
 
   return (
     <>
       <div className="records">
         <div className="table-container">
           <div className="table-btns">
-            <button className="csv">
+            <button className="csv" onClick={downloadCSV}>
               <FaFileCsv /> Export as CSV
             </button>
             <button className="pdf" onClick={generatePDF}>
