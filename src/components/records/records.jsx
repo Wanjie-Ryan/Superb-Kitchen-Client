@@ -68,49 +68,40 @@ function Records() {
     doc.save(pdfFileName);
   };
 
-  const convertToCSV =()=>{
-
-    const productData =[
+  const convertToCSV = () => {
+    const productData = [
       {
-        No:recordIndex +1,
-        Product:product?product.name :'product',
-        Amount:`ksh.${payd?payd.latestPayment.Amount[0]:'0'}`,
-        'Payment Status':'Paid',
-        'Delivery Status':'Pending'
+        No: recordIndex + 1,
+        Product: product ? product.name : "product",
+        Amount: `ksh.${payd ? payd.latestPayment.Amount[0] : "0"}`,
+        "Payment Status": "Paid",
+        "Delivery Status": "Pending",
+      },
+    ];
 
-      }
-    ]
+    const header = Object.keys(productData[0]);
 
-    const header = Object.keys(productData[0])
+    const csvContent = [
+      header.join(","),
+      ...productData.map((row) =>
+        header.map((fieldName) => JSON.stringify(row[fieldName])).join(",")
+      ),
+    ];
 
-    const csvContent =[
-      header.join(','),
-      ...productData.map((row)=>
-      header.map((fieldName)=>JSON.stringify(row[fieldName])).join(',')
-      )
-    ]
+    return csvContent.join("\n");
+  };
 
-    return csvContent.join('\n')
+  const downloadCSV = () => {
+    const csv = convertToCSV();
+    const csvBlob = new Blob([csv], { type: "text/csv" });
+    const csvUrl = URL.createObjectURL(csvBlob);
 
-
-  }
-
-  const downloadCSV = ()=>{
-
-    const csv = convertToCSV()
-    const csvBlob = new Blob([csv], {type:'text/csv'})
-    const csvUrl = URL.createObjectURL(csvBlob)
-
-    const a = document.createElement('a')
-    a.href =csvUrl
-    a.download = 'Product_purchased.csv'
-    a.click()
-    URL.revokeObjectURL(csvUrl)
-
-
-  }
-
-
+    const a = document.createElement("a");
+    a.href = csvUrl;
+    a.download = "Product_purchased.csv";
+    a.click();
+    URL.revokeObjectURL(csvUrl);
+  };
 
   return (
     <>
