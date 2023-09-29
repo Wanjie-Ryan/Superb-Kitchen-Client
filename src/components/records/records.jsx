@@ -48,6 +48,10 @@ function Records() {
     getSingleProduct();
   }, [productId]);
 
+  const generatePDF =()=>{
+    
+  }
+
   return (
     <>
       <div className="records">
