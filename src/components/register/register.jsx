@@ -79,6 +79,7 @@ function Register() {
 
       setLoad(false);
     } catch (err) {
+      // console.log(err)
       dispatch({ type: "regFail", payload: err });
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
